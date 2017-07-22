@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+const User = mongoose.model('User');
+const promisify = require('es6-promisify');
 
 exports.loginForm = (req, res) => {
   res.render('login', {title: 'Login'});
@@ -9,6 +10,7 @@ exports.registerForm = (req, res) => {
   res.render('register', {title: 'Register'});
 };
 
+// validate via express-validator
 exports.validateRegister = (req, res, next) => {
   req.sanitizeBody('name');
   req.checkBody('name', 'You must supply a name!').notEmpty();
@@ -29,4 +31,11 @@ exports.validateRegister = (req, res, next) => {
     return;
   }
   next();
+};
+
+exports.register = async (req, res, next) => {
+  const user = new User({email: req.body.email, name: req.body.name});
+  const register = promisify(User.register, User); // make register method from passport-local-mongoose to work on promise and not callback
+  await register(user, req.body.password);
+  next(); // pass to authController.login
 };
