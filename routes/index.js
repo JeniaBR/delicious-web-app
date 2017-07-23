@@ -11,10 +11,7 @@ router.get('/stores',catchErrors(storeController.getStores));
 
 // before we add a new store, the user have to be loggen in.
 // authController.isLoggedIn middleware will ensure that
-router.get('/add',
-  authController.isLoggedIn,
-  storeController.addStore
-);
+router.get('/add', authController.isLoggedIn, storeController.addStore);
 
 router.post('/add', 
   storeController.upload,
@@ -48,5 +45,8 @@ router.post('/register',
 );
 
 router.get('/logout', authController.logout);
+
+router.get('/account', authController.isLoggedIn, userController.account);
+router.post('/account', catchErrors(userController.updateAccount));
 
 module.exports = router;
