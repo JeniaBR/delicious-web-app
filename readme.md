@@ -1,7 +1,3 @@
-## What is this?
-
-Just you wait folks!
-
 ## Sample Data
 
 To load sample data, run the following command in your terminal:
