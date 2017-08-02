@@ -31,10 +31,10 @@ function typeAhead(search) {
       .get(`/api/search?q=${this.value}`)
       .then( res => {
         if(res.data.length) {
-          searchResult.innerHTML = searchResultsHTML(res.data);
+          searchResult.innerHTML = dompurify.sanitize(searchResultsHTML(res.data));
           return;
         }
-        searchResult.innerHTML = `<div class="search__result">No results for ${this.value} found!</div>`;
+        searchResult.innerHTML = dompurify.sanitize(`<div class="search__result">No results for ${this.value} found!</div>`);
       })
       .catch(err => {
         console.error(err);
