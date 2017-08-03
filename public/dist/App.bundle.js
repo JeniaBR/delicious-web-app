@@ -2693,10 +2693,60 @@ var _typeAhead = __webpack_require__(10);
 
 var _typeAhead2 = _interopRequireDefault(_typeAhead);
 
+var _map = __webpack_require__(38);
+
+var _map2 = _interopRequireDefault(_map);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
+(0, _map2.default)((0, _bling.$)('#map'));
+
+/***/ }),
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(12);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _bling = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapOptions = {
+  center: { lat: 43.2, lng: -79.8 },
+  zoom: 10
+};
+
+function loadPlaces(map) {
+  var lat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 43.2;
+  var lng = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -79.8;
+};
+
+function makeMap(mapDiv) {
+  if (!mapDiv) return;
+  // make our map
+  var map = new google.maps.Map(mapDiv, mapOptions);
+  var input = (0, _bling.$)('[name="geolocate"]');
+  console.log(input);
+};
+
+exports.default = makeMap;
 
 /***/ })
 /******/ ]);
