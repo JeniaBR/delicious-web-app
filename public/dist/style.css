@@ -915,7 +915,8 @@ label {
     font-size: 20px;
     position: absolute;
     opacity: 0;
-    top: 0; }
+    top: 0;
+    color: red; }
   .heart__button svg {
     width: 25px;
     fill: white; }
